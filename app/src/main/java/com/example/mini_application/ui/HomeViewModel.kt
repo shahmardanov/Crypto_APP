@@ -1,5 +1,6 @@
 package com.example.lazaapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +13,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: CoinRepository) : ViewModel() {
 
-    val brandData = MutableLiveData<List<Data>>()
     val data = MutableLiveData<List<Data>>()
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
@@ -32,7 +32,9 @@ class HomeViewModel @Inject constructor(private val repository: CoinRepository) 
         viewModelScope.launch {
             try {
                 val response = repository.getAllCoins()
+
                 if (response.isSuccessful) {
+
                     response.body()?.let {
                         data.value = it.data!!
                     }

@@ -1,6 +1,7 @@
 package com.example.mini_application.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,26 +17,30 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private val viewModel by viewModels<HomeViewModel>()
-    private val coinAdapter=CoinAdapter()
+    private val coinAdapter = CoinAdapter()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.rvHome.adapter = coinAdapter
         observeData()
 
     }
 
     private fun observeData() {
-        viewModel.brandData.observe(viewLifecycleOwner) {
+        viewModel.data.observe(viewLifecycleOwner) {
+            Log.e("gelendata55", it.toString())
             coinAdapter.updateList(it)
         }
 
 
         viewModel.loading.observe(viewLifecycleOwner) {
+            Log.e("gelendata", it.toString())
 
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
+            Log.e("gelendata", it.toString())
 
         }
     }

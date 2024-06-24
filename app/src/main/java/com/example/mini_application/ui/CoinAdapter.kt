@@ -24,7 +24,17 @@ class CoinAdapter : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
-        holder.coinItem.item = listOfCoin[position]
+        val currentItem = listOfCoin[position]
+        holder.coinItem.item = currentItem
+        when(currentItem.code){
+            "BTCUSD"->holder.coinItem.imageView2.setImageResource(R.drawable.coin1)
+            "BTCTRY"->holder.coinItem.imageView2.setImageResource(R.drawable.coin2)
+            "ETHBTC"->holder.coinItem.imageView2.setImageResource(R.drawable.coin3)
+            "ETHTRY"->holder.coinItem.imageView2.setImageResource(R.drawable.coin4)
+            "BTCEUR"->holder.coinItem.imageView2.setImageResource(R.drawable.coin5)
+            "ETHEUR"->holder.coinItem.imageView2.setImageResource(R.drawable.coin6)
+
+        }
 
     }
 

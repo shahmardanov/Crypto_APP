@@ -31,6 +31,7 @@
 
             <TextView
                 android:id="@+id/textViewcode"
+                android:text="@{item.code}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -42,6 +43,7 @@
 
             <TextView
                 android:id="@+id/textViewshortName"
+                android:text="@{item.fullName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -53,6 +55,7 @@
 
             <TextView
                 android:id="@+id/textViewfullName"
+                android:text="@{item.shortName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
