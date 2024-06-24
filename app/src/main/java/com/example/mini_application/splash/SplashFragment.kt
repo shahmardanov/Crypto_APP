@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.lazaapp.base.BaseFragment
-import com.example.museumsinturkey.databinding.FragmentSplashBinding
+import com.example.mini_application.base.BaseFragment
+import com.example.mini_application.databinding.FragmentSplashBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
         lifecycleScope.launch {
             delay(1500)
 
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToCityFragment())
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
 
         }
     }
