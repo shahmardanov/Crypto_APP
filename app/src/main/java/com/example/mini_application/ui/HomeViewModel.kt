@@ -5,13 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mini_application.data.model.CoinModel
 import com.example.mini_application.data.model.Data
+import com.example.mini_application.data.repository.CoinRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: CoinRepository) : ViewModel() {
 
-    val brandData = MutableLiveData<List<CoinModel>>()
+    val brandData = MutableLiveData<List<Data>>()
     val data = MutableLiveData<List<Data>>()
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
@@ -30,10 +31,10 @@ class HomeViewModel @Inject constructor(private val repository: Repository) : Vi
         loading.value = true
         viewModelScope.launch {
             try {
-                val response = repository.getAllProducts()
+                val response = repository.getAllCoins()
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        data.value = it
+                        data.value = it.data!!
                     }
                 } else {
                     error.value = response.errorBody().toString()

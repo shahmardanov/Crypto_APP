@@ -25,9 +25,7 @@ class CoinAdapter : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         holder.coinItem.item = listOfCoin[position]
-        when (listOfCoin[position].fullName){
-            R.drawable.coin1
-        }
+
     }
 
     fun updateList(newList: List<Data>) {

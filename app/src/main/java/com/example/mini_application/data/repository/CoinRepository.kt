@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class CoinRepository @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getAllCity(): Response<CoinModel> = withContext(Dispatchers.IO) {
+    suspend fun getAllCoins(): Response<CoinModel> = withContext(Dispatchers.IO) {
         return@withContext apiService.getAllCity()
     }
 }

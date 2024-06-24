@@ -7,7 +7,7 @@ data class CoinModel(
     @SerializedName("creditUsed")
     val creditUsed: Int?,
     @SerializedName("data")
-    val `data`: List<Data?>?,
+    val `data`: List<Data>?,
     @SerializedName("endpoint")
     val endpoint: String?,
     @SerializedName("message")
